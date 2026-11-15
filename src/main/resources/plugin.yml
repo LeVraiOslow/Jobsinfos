@@ -1,0 +1,13 @@
+name: JobsInfo
+version: '${project.version}'
+main: fr.jobsinfo.JobsInfoPlugin
+api-version: '26.2'
+description: Clic droit sur un job dans /jobs = menu d'infos (blocs, XP, argent)
+depend: [ExcellentJobs]
+commands:
+  jobsinfo:
+    description: Recharge JobsInfo
+    usage: /<command> reload
+permissions:
+  jobsinfo.reload:
+    default: op
