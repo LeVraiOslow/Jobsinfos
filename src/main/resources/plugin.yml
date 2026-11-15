@@ -2,12 +2,17 @@ name: JobsInfo
 version: '${project.version}'
 main: fr.jobsinfo.JobsInfoPlugin
 api-version: '26.2'
-description: Clic droit sur un job dans /jobs = menu d'infos (blocs, XP, argent)
+description: Clic droit sur un job dans /jobs = menu des actions du job (blocs, XP, argent)
 depend: [ExcellentJobs]
+softdepend: [Nexo]
 commands:
   jobsinfo:
-    description: Recharge JobsInfo
+    description: Gestion de JobsInfo
     usage: /<command> reload
 permissions:
+  jobsinfo.use:
+    description: Ouvrir le menu d'infos par clic droit dans /jobs
+    default: true
   jobsinfo.reload:
+    description: Recharger la configuration
     default: op
