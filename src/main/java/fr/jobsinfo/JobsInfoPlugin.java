@@ -170,7 +170,7 @@ public final class JobsInfoPlugin extends JavaPlugin implements Listener, org.bu
 
     // ------------------------------------------------------------- detection
 
-    @EventHandler(priority = EventPriority.MONITOR)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onJobsMenuClick(InventoryClickEvent event) {
         if (event.getClick() != ClickType.RIGHT) return;
         if (!(event.getWhoClicked() instanceof Player player)) return;
@@ -183,10 +183,32 @@ public final class JobsInfoPlugin extends JavaPlugin implements Listener, org.bu
         ItemStack clicked = event.getCurrentItem();
         if (clicked == null || clicked.getType().isAir()) return;
         Job job = matchJob(clicked);
+
+        if (getConfig().getBoolean("debug", false)) debugClick(player, top, clicked, job);
         if (job == null) return;
 
-        // On ouvre au tick suivant pour ne pas toucher aux inventaires pendant le clic.
-        Bukkit.getScheduler().runTask(this, () -> open(player, job, 0));
+        // On tente d'empecher ExcellentJobs de traiter ce clic...
+        event.setCancelled(true);
+
+        // ...et comme il peut quand meme ouvrir son menu des niveaux, on ouvre le notre APRES lui,
+        // puis on verifie que le notre est bien celui qui reste affiche.
+        Bukkit.getScheduler().runTaskLater(this, () -> open(player, job, 0), 2L);
+        Bukkit.getScheduler().runTaskLater(this, () -> {
+            if (player.isOnline() && !(player.getOpenInventory().getTopInventory().getHolder() instanceof InfoMenu)) {
+                open(player, job, 0);
+            }
+        }, 6L);
+    }
+
+    private void debugClick(Player player, Inventory top, ItemStack clicked, Job job) {
+        ItemMeta meta = clicked.getItemMeta();
+        List<Float> floats = meta != null && meta.hasCustomModelDataComponent()
+                ? meta.getCustomModelDataComponent().getFloats() : List.of();
+        String name = meta != null && meta.hasDisplayName()
+                ? PlainTextComponentSerializer.plainText().serialize(meta.displayName()) : "-";
+        getLogger().info("[debug] clic droit par " + player.getName() + " : menu=" + top.getSize()
+                + " slots, item=" + clicked.getType() + ", modelData=" + floats + ", nom='" + name
+                + "', job reconnu=" + (job == null ? "AUCUN" : job.id()));
     }
 
     /** Retrouve le job d'un item du menu : par custom model data, sinon par nom affiche. */
