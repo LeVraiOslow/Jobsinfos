@@ -1,3 +1,7 @@
+# Affiche dans la console ce que le plugin voit quand un joueur fait clic droit dans le menu /jobs.
+# Utile si le menu d'infos ne s'ouvre pas. Mets false une fois que tout marche.
+debug: true
+
 # Dossier de config d'ExcellentJobs (vide = plugins/ExcellentJobs)
 excellentjobs-folder: ""
 
