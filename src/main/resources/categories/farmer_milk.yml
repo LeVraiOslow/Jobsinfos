@@ -1,0 +1,40 @@
+# =====================================================================
+#  CATEGORIE (= une action d'un job). Un fichier par action.
+#  Tu peux ranger les fichiers dans des sous-dossiers, ou en ajouter autant que tu veux.
+#
+#  Job          : id du job d'ExcellentJobs (nom du fichier dans ExcellentJobs/jobs, ex. miner)
+#  Order        : ordre d'affichage (petit = en premier)
+#  Slot         : slot dans le menu des actions (voir menus/category_menu.yml)
+#  Name         : nom de l'action (couleurs OK) -> placeholder %category%
+#  Action_Label : texte affiche dans la description de chaque ligne -> %action%
+#  Item         : icone de l'action. Material = DIAMOND_PICKAXE | nexo:mon_item
+#                 Placeholders : %job% %category% %action% %count% (nombre de lignes)
+#  Objectives   : ids des objectifs d'ExcellentJobs a afficher (cles sous 'Objectives:' du job)
+#  Types        : (optionnel) tous les objectifs d'un type : mining, gathering, killing, fishing...
+#  Custom_Entries : (optionnel) lignes ajoutees a la main, meme format qu'ExcellentJobs :
+#                     minecraft:iron_ingot: "xp_min;xp_max argent_min;argent_max chance"
+#  Custom_Key_Type : material (defaut) ou entity, pour les Custom_Entries
+#  Sort         : money_desc (defaut), money_asc, xp_desc, xp_asc, name, none
+#  Entries_Title / Entry : (optionnel) surcharge le titre / l'apparence des lignes du detail
+# =====================================================================
+
+Job: farmer
+Order: 4
+Slot: 16
+Name: "&b&lTraire"
+Action_Label: "Traire cet animal"
+
+Item:
+  Material: MILK_BUCKET
+  Name: "%category%"
+  Lore:
+    - "&7Animaux que tu traits."
+    - ""
+    - "&e▪ &7Lignes : &f%count%"
+    - ""
+    - "&6Clic gauche &7→ &eVoir les animaux"
+  Glow: false
+
+Objectives: [milking]
+Types: []
+Sort: money_desc

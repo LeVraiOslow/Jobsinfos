@@ -1,0 +1,64 @@
+# =====================================================================
+#  MENU DU DETAIL D'UNE ACTION   (liste des blocs / mobs / poissons... + XP + argent)
+#
+#  Placeholders (titre, noms, lore) :
+#    %job% %category% %action% %page% %pages% %symbol%
+#    et pour chaque ligne (Entry) :
+#    %name% (nom traduit) %xp% %xp_min% %xp_max% %money% %money_min% %money_max% %chance%
+#    %chance_line% (ligne "Chance" : n'apparait que si la chance est < 100 %)
+#  Une ligne de lore reduite a un placeholder vide (ex. %chance_line%) est supprimee.
+#  Chaque categorie peut surcharger Entries_Title et Entry dans son propre fichier.
+# =====================================================================
+Title: "<dark_gray>%job% &8• &7%category% &8(%page%/%pages%)"
+Rows: 6
+
+# Slots ou sont places les lignes (autant de lignes par page que de slots).
+Entry_Slots: "10-16,19-25,28-34,37-43"
+
+# Cache les boutons Precedent/Suivant quand ils ne servent a rien.
+Hide_When_Unavailable: true
+
+Decoration:
+  border:
+    Material: BLACK_STAINED_GLASS_PANE
+    Name: " "
+    Slots: "0-8,9,17,18,26,27,35,36,44,45-53"
+
+Entry:
+  Name: "&f&l%name%"
+  Lore:
+    - "&7%action%"
+    - ""
+    - "&6▪ &7XP : &e%xp%"
+    - "&a▪ &7Argent : &a%money%%symbol%"
+    - "%chance_line%"
+  Chance_Line: "&b▪ &7Chance : &b%chance%%"
+
+# Affiche quand l'action n'a aucune ligne.
+Empty:
+  Slot: 22
+  Material: BARRIER
+  Name: "&cAucune donnee"
+  Lore:
+    - "&7Rien n'est configure pour cette action."
+
+Previous:
+  Slot: 48
+  Material: ARROW
+  Name: "&6&lPage precedente"
+  Lore:
+    - "&7Page %page%/%pages%"
+
+Next:
+  Slot: 50
+  Material: ARROW
+  Name: "&6&lPage suivante"
+  Lore:
+    - "&7Page %page%/%pages%"
+
+Back:
+  Slot: 49
+  Material: OAK_DOOR
+  Name: "&c&lRetour"
+  Lore:
+    - "&7Page %page%/%pages%"

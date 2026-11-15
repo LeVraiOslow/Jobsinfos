@@ -1,0 +1,10 @@
+# =====================================================================
+#  JobsInfo - MESSAGES
+#  Couleurs &c &l &#RRGGBB ou MiniMessage. %prefix% = le prefixe ci-dessous.
+#  Laisse un message vide ("") pour le desactiver.
+# =====================================================================
+prefix: "&8[&6Jobs&8] "
+reloaded: "%prefix%&aConfiguration rechargee &7(&e%jobs%&7 jobs, &e%categories%&7 categories)&a."
+no-permission: "%prefix%&cTu n'as pas la permission."
+usage: "%prefix%&7Utilisation : &e/jobsinfo reload"
+no-categories: "%prefix%&cAucune action n'est configuree pour le job &e%job%&c (dossier categories/)."

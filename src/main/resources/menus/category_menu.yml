@@ -1,0 +1,29 @@
+# =====================================================================
+#  MENU DES ACTIONS D'UN JOB   (ex. Mineur -> Miner / Cuire)
+#
+#  Placeholders : %job%
+#  Title : couleurs &c, MiniMessage, et avec Nexo : <glyph:mon_menu> <shift:-52>
+#          Exemple : Title: "<shift:-52><glyph:mon_menu>"
+#  Rows : nombre de lignes (1 a 6)
+#  Les items : Material = DIAMOND | minecraft:diamond | nexo:mon_item
+#              Name, Lore, Amount, Model_Data, Glow, Hide_Flags
+#  Chaque action est placee a son "Slot" (defini dans son fichier de categories/).
+#  Si une action n'a pas de Slot, on prend les Default_Slots dans l'ordre.
+# =====================================================================
+Title: "<dark_gray>%job% &8• &7Actions"
+Rows: 3
+Default_Slots: "11,13,15"
+
+# Decoration : autant de blocs que tu veux. Slots : "0-8,18-26" ou "1,2,5-7"
+Decoration:
+  border:
+    Material: BLACK_STAINED_GLASS_PANE
+    Name: " "
+    Slots: "0-8,18-26"
+
+Back:
+  Slot: 22
+  Material: OAK_DOOR
+  Name: "&c&lRetour"
+  Lore:
+    - "&7Retour au menu des jobs"

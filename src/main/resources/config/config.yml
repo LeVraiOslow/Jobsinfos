@@ -1,0 +1,49 @@
+# =====================================================================
+#  JobsInfo - CONFIGURATION GENERALE
+#  Dossiers :  config/ (ici)  |  messages/  |  menus/  |  categories/
+#  Textes : couleurs &c &l &#RRGGBB, MiniMessage <red> <gradient:..>,
+#           et avec Nexo : <glyph:nom_du_glyph> <shift:-52>
+#  Apres modification : /jobsinfo reload
+# =====================================================================
+
+# Affiche dans la console ce que le plugin voit quand un joueur fait le clic dans /jobs
+# (utile si le menu ne s'ouvre pas).
+debug: false
+
+# Dossier d'ExcellentJobs (vide = plugins/ExcellentJobs)
+excellentjobs-folder: ""
+
+# ---- Detection du menu /jobs d'ExcellentJobs ----
+# Nombre de slots du menu /jobs (generic_9x4 = 36).
+browse-menu-size: 36
+# Clic qui ouvre le menu d'infos : RIGHT, SHIFT_RIGHT, SHIFT_LEFT, MIDDLE...
+trigger-click: RIGHT
+# Delais (en ticks) : ouverture de notre menu apres le clic, puis verification
+# (ExcellentJobs peut ouvrir son menu des niveaux juste apres le clic).
+open-delay-ticks: 2
+verify-delay-ticks: 6
+# Commande lancee par le bouton Retour pour revenir au menu /jobs.
+back-to-jobs-command: "jobs menu"
+
+# Si un job n'a qu'une seule action, ouvre directement son detail (sans menu intermediaire).
+skip-category-menu-if-single: true
+
+# ---- Affichage des gains ----
+# Dans les fichiers de job : "xp_min;xp_max argent_min;argent_max chance".
+# Mets true si chez toi c'est l'inverse (argent d'abord).
+swap-xp-and-money: false
+currency-symbol: "$"
+number-format: "0.##"
+number-locale: "fr"
+
+# ---- Glyphs (secours) ----
+# Normalement <glyph:nom> est gere par Nexo. Si ce n'est pas le cas, tu peux definir
+# tes glyphs ici (caractere unicode) :
+glyphs: {}
+#  mon_menu: "\uE001"
+
+# ---- Sons (cle de son Minecraft ou de resource pack ; vide = aucun) ----
+sounds:
+  open: "ui.button.click"
+  click: "ui.button.click"
+  page: "item.book.page_turn"
