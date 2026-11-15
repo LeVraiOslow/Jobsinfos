@@ -288,8 +288,9 @@ public final class JobsInfoPlugin extends JavaPlugin implements Listener, org.bu
         }
 
         // Le nom est un composant traduisible : on l'injecte apres coup dans le format MiniMessage.
+        final Component finalName = name;
         Component display = text(getConfig().getString("entry.name", "%name%"), Map.of("%name%", "\u0000"))
-                .replaceText(b -> b.matchLiteral("\u0000").replacement(name));
+                .replaceText(b -> b.matchLiteral("\u0000").replacement(finalName));
         return named(icon, display, lore);
     }
 
